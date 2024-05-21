@@ -1,0 +1,34 @@
+CREATE TABLE mentor_details (
+    mentor_id INT PRIMARY KEY,
+    mentor_name VARCHAR(30) UNIQUE
+);
+
+CREATE TABLE student_details (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(30) UNIQUE
+);
+
+CREATE TABLE batch_details (
+    batch_id INT PRIMARY KEY,
+    batch_name VARCHAR(25) UNIQUE
+);
+
+
+CREATE TABLE zenclass (
+    s_no INT PRIMARY KEY,
+    batch_id INT,
+    batch_name VARCHAR(30),
+    student_id INT,
+    student_name VARCHAR(30),
+    mentor_name VARCHAR(30),
+    task_name varchar(100),
+    task_submitted varchar(15),
+    task_not_submitted varchar(15),
+    attendence INT,
+    course VARCHAR(30),
+    queries VARCHAR(250),
+    FOREIGN KEY (student_id) REFERENCES student_details(student_id),
+    FOREIGN KEY (mentor_name) REFERENCES mentor_details(mentor_name),
+    FOREIGN KEY (batch_id) REFERENCES batch_details(batch_id),
+    FOREIGN KEY (batch_name) REFERENCES batch_details(batch_name)
+);
